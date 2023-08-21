@@ -5,14 +5,14 @@ pipeline {
         stage("clone code"){
             steps {
                 echo "clone the code into github"
-                git url:"https://github.com/Shiba07s/notes-app.git", branch:"main"
+                git url:"https://github.com/Swayan12/notes-app.git", branch:"main"
             }
             
         }
         stage("build code"){
             steps {
                 echo "build image"
-                sh "docker build -t ashu-note-app ."
+                sh "docker build -t swayan-note-app ."
             }
             
         }
@@ -20,9 +20,9 @@ pipeline {
             steps {
                  echo "Pushing the image to docker hub"
                 withCredentials([usernamePassword(credentialsId:"dockerHub",passwordVariable:"dockerHubPass",usernameVariable:"dockerHubUser")]){
-                sh "docker tag ashu-note-app ${env.dockerHubUser}/ashu-note-app:latest"
+                sh "docker tag swayan-note-app ${env.dockerHubUser}/swayan-note-app:latest"
                 sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPass}"
-                sh "docker push ${env.dockerHubUser}/ashu-note-app:latest"
+                sh "docker push ${env.dockerHubUser}/swayan-note-app:latest"
                 }
                  
             }
