@@ -1,6 +1,6 @@
 version : "3.3"
 services :
   web :
-     image : shiba07s/ashu-note-app:latest
+     image : swayan/swayan-note-app:latest
      ports :
          - "8000:8000"
